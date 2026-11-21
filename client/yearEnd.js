@@ -39,13 +39,13 @@
     let html = "<div class='yc-line'>Per cylinder: " + cap + " " + c.unit + " × ₹100 = " +
       (disc ? "<s>" + inr(list) + "</s> <b>" + inr(per) + "</b> <span class='off'>10% off</span>" : "<b>" + inr(per) + "</b>") + "</div>";
     html += "<div class='yc-total'>" + n + " cylinder" + (n > 1 ? "s" : "") + ": <b>" + inr(total) + "</b> + GST</div>";
-    if (saved > 0) html += "<div class='yc-save'>🎉 Aap bacha rahe hain <b>" + inr(saved) + "</b></div>";
-    html += "<div class='yc-msg'>Sirf <b>" + inr(total) + "</b> mein aapke " + n + " extinguisher" + (n > 1 ? "s" : "") +
-      " phir se emergency-ready — aapka fire safety investment kaam ka bana rahega.</div>";
+    if (saved > 0) html += "<div class='yc-save'>🎉 You save <b>" + inr(saved) + "</b></div>";
+    html += "<div class='yc-msg'>For just <b>" + inr(total) + "</b>, your " + n + " extinguisher" + (n > 1 ? "s are" : " is") +
+      " emergency-ready again — and your fire safety investment keeps protecting you.</div>";
     html += "<div class='yc-pick'>" + (n >= 4 ? "✅ FREE pickup &amp; drop included*" : "Add " + (4 - n) + " more cylinder" + (4 - n > 1 ? "s" : "") + " for FREE pickup &amp; drop*") + "</div>";
     out.innerHTML = html;
 
-    const msg = "Hello The Fire Wala, Year-End offer quote chahiye: " + n + " x " + cap + " " + c.unit + " " + type.value +
+    const msg = "Hello The Fire Wala, I want a Year-End offer quote: " + n + " x " + cap + " " + c.unit + " " + type.value +
       " (estimate " + inr(total) + " + GST).";
     wa.href = "https://wa.me/917772078610?text=" + encodeURIComponent(msg);
   }
