@@ -178,6 +178,7 @@ if (heroForm) {
 
     try {
       await sendServiceRequest(heroForm);
+      tfwTrack("lead_form_submit", { form_id: "hero" });
       heroForm.reset();
     window.open("thankyou.html", "_blank");
 
@@ -223,6 +224,7 @@ if (modalForm) {
 
     try {
       await sendServiceRequest(modalForm);
+      tfwTrack("lead_form_submit", { form_id: "modal" });
 
       if (formBox) formBox.style.display = "none";
       if (success) success.style.display = "block";
@@ -807,3 +809,24 @@ if (companyInput) {
     this.value = this.value.replace(/[^A-Za-z ]/g, "").slice(0, 100);
   });
 }
+
+// =========================================
+// CONVERSION TRACKING (GTM dataLayer events)
+// whatsapp_click, call_click, lead_form_submit
+// =========================================
+
+function tfwTrack(eventName, extra) {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(Object.assign({ event: eventName }, extra || {}));
+}
+
+document.addEventListener("click", function (e) {
+  const link = e.target.closest && e.target.closest("a[href]");
+  if (!link) return;
+  const href = link.getAttribute("href") || "";
+  if (href.indexOf("wa.me/") !== -1 || href.indexOf("api.whatsapp.com") !== -1) {
+    tfwTrack("whatsapp_click", { link_location: link.className || "link" });
+  } else if (href.indexOf("tel:") === 0) {
+    tfwTrack("call_click", { link_location: link.className || "link" });
+  }
+});
