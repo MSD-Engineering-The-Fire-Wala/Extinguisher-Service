@@ -863,9 +863,10 @@ document.addEventListener("click", function (e) {
 
 
 // =========================================
-// PRICE CALCULATOR (ABC, Rs.100/kg + GST)
+// PRICE CALCULATOR (ABC / CO2 / Foam, Rs.100/kg + GST)
 // =========================================
 (function () {
+  const type = document.getElementById("calcType");
   const size = document.getElementById("calcSize");
   const qty = document.getElementById("calcQty");
   const out = document.getElementById("calcOut");
@@ -880,10 +881,12 @@ document.addEventListener("click", function (e) {
     const total = base * (1 + GST);
     out.innerHTML = "Estimated: <b>" + inr(base) + "</b> + GST (" + inr(total) + " incl. 18% GST)<br>" +
       (n >= 4 ? "✅ FREE pickup &amp; drop included" : "Add " + (4 - n) + " more cylinder(s) for FREE pickup &amp; drop");
-    const msg = "Hello The Fire Wala, I want refilling quote: " + n + " x " + kg + " kg ABC cylinders (estimate " + inr(base) + " + GST).";
+    const t = type ? type.value : "ABC";
+    const msg = "Hello The Fire Wala, I want refilling quote: " + n + " x " + kg + " kg " + t + " cylinders (estimate " + inr(base) + " + GST).";
     wa.href = "https://wa.me/917772078610?text=" + encodeURIComponent(msg);
   }
   size.addEventListener("change", update);
+  if (type) type.addEventListener("change", update);
   qty.addEventListener("input", update);
   update();
 })();

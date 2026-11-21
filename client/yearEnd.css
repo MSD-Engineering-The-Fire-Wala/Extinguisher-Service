@@ -1,0 +1,11 @@
+
+.type-tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 4px 0 16px; }
+.type-tile { border: 2px solid var(--red, #E87010); border-radius: 12px; padding: 12px; text-align: center; background: #fff7f0; }
+.type-tile .tt-name { display: block; font-weight: 700; color: var(--dark, #141414); }
+.type-tile .tt-price { display: block; font-size: 24px; font-weight: 800; color: var(--red, #E87010); }
+.type-tile small { font-size: 13px; color: var(--muted, #667085); }
+#calculator .calc-row { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 768px) { .type-tiles { gap: 6px; } .type-tile .tt-price { font-size: 20px; } .calc-row { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .offer-banner .ob-more { display: none; } }
+.offer-banner .ye-cd { margin-left: 6px; font-weight: 700; }
+@media (max-width: 768px) { .type-tiles { grid-template-columns: repeat(2, 1fr); } #calculator .calc-row { grid-template-columns: 1fr; } }
