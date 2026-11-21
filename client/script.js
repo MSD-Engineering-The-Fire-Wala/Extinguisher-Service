@@ -99,61 +99,59 @@ if (modal) {
    FORM SUBMISSION
 ========================================= */
 
-// LOCAL BACKEND
-const API_URL =
-   "https://extinguisher-service.onrender.com/api/service-requests";
+// GOOGLE SHEET RECEIVER (Google Apps Script web app)
+// Paste the Apps Script "Web app URL" (ends with /exec) below.
+const SHEET_WEBAPP_URL = "PASTE_APPS_SCRIPT_WEB_APP_URL_HERE";
 
+const SUCCESS_MESSAGE =
+  "Thank you! Aapka form mil gaya hai. Hamari team jald hi aapse contact karegi.";
 
-// Common function: send form data to backend
+// Common function: send form data to the Google Sheet
 async function sendServiceRequest(form) {
   const formData = new FormData(form);
 
-  const quantityValue = formData.get("quantity");
+  const phone = (formData.get("phone") || "").trim();
+  if (!/^[6-9]\d{9}$/.test(phone)) {
+    throw new Error("Please enter a valid 10-digit mobile number.");
+  }
 
   const requestData = {
-    client_name: formData.get("clientName")?.trim(),
-    phone: formData.get("phone")?.trim(),
-    email: formData.get("email")?.trim(),
-    company_name: formData.get("company")?.trim() || null,
-    service_type: formData.get("serviceType"),
-    additional_details:
-      formData.get("additional_details")?.trim() || null,
-    extinguisher_quantity:
-      quantityValue === "" || quantityValue === null
-        ? null
-        : Number(quantityValue)
+    client_name: (formData.get("clientName") || "").trim(),
+    phone: phone,
+    email: (formData.get("email") || "").trim(),
+    company_name: (formData.get("company") || "").trim(),
+    service_type: formData.get("serviceType") || "",
+    extinguisher_quantity: formData.get("quantity") || "",
+    form_id: form.id,
+    page: window.location.href,
+    website: formData.get("website") || "" // honeypot
   };
 
-  const response = await fetch(API_URL, {
+  if (SHEET_WEBAPP_URL.indexOf("https://") !== 0) {
+    throw new Error("Form abhi setup ho raha hai. Kripya WhatsApp 77720 78610 par message karein.");
+  }
+
+  // text/plain avoids a CORS preflight; Apps Script reads the raw body
+  await fetch(SHEET_WEBAPP_URL, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
+    mode: "no-cors",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
     body: JSON.stringify(requestData)
   });
 
-  const responseText = await response.text();
+  return { success: true };
+}
 
-  console.log("HTTP status:", response.status);
-  console.log("Backend response:", responseText);
-
-  let result;
-
-  try {
-    result = JSON.parse(responseText);
-  } catch {
-    throw new Error(
-      `Backend returned a non-JSON response. HTTP ${response.status}`
-    );
+function showFormSuccess(form) {
+  let box = form.parentNode.querySelector(".form-success-msg");
+  if (!box) {
+    box = document.createElement("div");
+    box.className = "form-success-msg";
+    box.setAttribute("role", "status");
+    form.parentNode.insertBefore(box, form.nextSibling);
   }
-
-  if (!response.ok || !result.success) {
-    throw new Error(
-      result.message || `Request failed: HTTP ${response.status}`
-    );
-  }
-
-  return result;
+  box.textContent = "✓ " + SUCCESS_MESSAGE;
+  box.style.display = "block";
 }
 
 
@@ -178,8 +176,9 @@ if (heroForm) {
 
     try {
       await sendServiceRequest(heroForm);
+      tfwTrack("lead_form_submit", { form_id: "hero" });
       heroForm.reset();
-    window.open("thankyou.html", "_blank");
+      showFormSuccess(heroForm);
 
     } catch (error) {
       console.error("Hero form error:", error);
@@ -192,7 +191,7 @@ if (heroForm) {
     } finally {
       if (submitButton) {
         submitButton.disabled = false;
-        submitButton.textContent = "Submit Quote Request";
+        submitButton.textContent = "Submit your quote";
       }
     }
   });
@@ -223,12 +222,12 @@ if (modalForm) {
 
     try {
       await sendServiceRequest(modalForm);
+      tfwTrack("lead_form_submit", { form_id: "modal" });
 
       if (formBox) formBox.style.display = "none";
       if (success) success.style.display = "block";
 
       modalForm.reset();
-      window.open("thankyou.html", "_blank");
 
 
     } catch (error) {
@@ -807,3 +806,24 @@ if (companyInput) {
     this.value = this.value.replace(/[^A-Za-z ]/g, "").slice(0, 100);
   });
 }
+
+// =========================================
+// CONVERSION TRACKING (GTM dataLayer events)
+// whatsapp_click, call_click, lead_form_submit
+// =========================================
+
+function tfwTrack(eventName, extra) {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(Object.assign({ event: eventName }, extra || {}));
+}
+
+document.addEventListener("click", function (e) {
+  const link = e.target.closest && e.target.closest("a[href]");
+  if (!link) return;
+  const href = link.getAttribute("href") || "";
+  if (href.indexOf("wa.me/") !== -1 || href.indexOf("api.whatsapp.com") !== -1) {
+    tfwTrack("whatsapp_click", { link_location: link.className || "link" });
+  } else if (href.indexOf("tel:") === 0) {
+    tfwTrack("call_click", { link_location: link.className || "link" });
+  }
+});

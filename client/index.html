@@ -6,7 +6,28 @@ index.html
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Fire Wala | Fire Extinguisher Supply & Refilling</title>
+  <title>Fire Extinguisher Refilling in Raipur | ₹100/kg | The Fire Wala</title>
+  <meta name="description" content="Fire extinguisher refilling in Raipur at ₹100/kg + GST (limited offer). 24–48 hours, free pickup-drop on 4+ cylinders, certificate + next-due sticker. ISO 9001:2015, since 2016. Call/WhatsApp 77720 78610.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "The Fire Wala | MSD Engineering",
+    "description": "Fire extinguisher refilling, supply and fire safety services in Raipur.",
+    "telephone": "+91-7772078610",
+    "url": "https://www.thefirewala.in/",
+    "foundingDate": "2016",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Office No. G04, Safoorah Complex, Parashuram Chowk, Stadium Road, in front of Kota",
+      "addressLocality": "Raipur",
+      "addressRegion": "Chhattisgarh",
+      "postalCode": "492010",
+      "addressCountry": "IN"
+    },
+    "areaServed": ["Raipur", "Siltara", "Urla", "Kota", "Shankar Nagar", "Amanaka", "Sondongri", "Tatibandh"]
+  }
+  </script>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="nav.css">
   <link rel="stylesheet" href="stats.css">
@@ -20,6 +41,7 @@ index.html
   <link rel="stylesheet" href="industry.css">
   <link rel="stylesheet" href="modal.css">
   <link rel="stylesheet" href="cylinderDelivery.css">
+  <link rel="stylesheet" href="landingUpgrade.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css">
   <!-- Google Tag Manager -->
   <script>(function (w, d, s, l, i) {
@@ -40,8 +62,15 @@ index.html
   <!-- End Google Tag Manager (noscript) -->
 
   <!-- Navbar section -->
-  
+
 <nav class="nav">
+  <!-- Offer banner (inside fixed nav so it stays visible) -->
+  <div class="offer-banner" role="note">
+    <strong>🔥 Limited Offer:</strong> Refilling <s>₹150</s> <b>₹100/kg + GST</b>
+    <span class="ob-sep">·</span> 24–48 hrs
+    <span class="ob-sep">·</span> FREE pickup-drop on 4+ cylinders
+  </div>
+
   <div class="container-nav navin">
 
     <!-- Logo -->
@@ -94,6 +123,8 @@ index.html
         </div>
 
         <form id="quoteForm">
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0">
+
 
           <div class="quote-form-grid">
 
@@ -110,28 +141,25 @@ index.html
             </div>
 
             <div class="form-group">
-              <label for="heroEmail">
-                Email id <span class="star">*</span>
+              <label for="quantity">
+                Number of Extinguishers
               </label>
-              <input type="email" id="heroEmail" name="email" placeholder="you@company.com" autocomplete="email" required>
+              <input type="number" id="quantity" name="quantity" min="1" placeholder="e.g. 5">
             </div>
 
             <div class="form-group">
               <label for="company">
                 Company / Organization
               </label>
-              <input type="text" id="company" name="company" placeholder="Enter company name"  maxlength="100" pattern="[A-Za-z ]*">
+              <input type="text" id="company" name="company" placeholder="Enter company name" maxlength="100">
             </div>
 
-            <!-- <div class="form-group">
-              <label for="quantity">
-                Number of Extinguishers
+            <div class="form-group">
+              <label for="heroEmail">
+                Email id (optional)
               </label>
-              <input type="number" id="quantity" name="quantity" min="1" placeholder="Minimum quantity: 1">
-              <small class="input-hint">
-                Minimum: 1
-              </small>
-            </div> -->
+              <input type="email" id="heroEmail" name="email" placeholder="you@company.com" autocomplete="email">
+            </div>
 
             <div class="form-group">
               <label for="serviceType">
@@ -167,20 +195,25 @@ index.html
       <div class="hero-content">
 
         <h1 class="heading">
-            Fire Extinguisher Sales & Services 
-          <span>in Raipur</span>
+          Fire Extinguisher Refilling
+          <span>in Raipur — ₹100/kg + GST</span>
         </h1>
 
-        <div class="eyebrow">
-          WHY CHOOSE OUR SERVICE?
+        <p class="hero-areas">Siltara · Urla · Kota · Shankar Nagar · Amanaka · Sondongri · Tatibandh</p>
+
+        <div class="trust-chips">
+          <span>ISO 9001:2015</span>
+          <span>Since 2016</span>
+          <span>10,000+ Serviced</span>
+          <span>700+ Clients</span>
         </div>
 
         <ul class="hero-list">
-          <li>Quality Products – Fire extinguishers for your safety needs.</li>
-          <li>Reliable Refilling – Keep your extinguishers ready for emergencies.</li>
-          <li>Professional Service – Support for your fire safety requirements.</li>
-          <li>Hassle-Free Process – Easy quotation and service booking.</li>
-          <li>Customer-Focused Support – Solutions tailored to your needs.</li>
+          <li>24–48 hours turnaround (depends on extinguisher type)</li>
+          <li>FREE pickup &amp; drop on 4 or more cylinders — even 1 cylinder accepted</li>
+          <li>ABC, CO2, Foam &amp; Water type refilling</li>
+          <li>Refilling certificate + next-due-date sticker on every cylinder</li>
+          <li>Limited period offer — book your slot today</li>
         </ul>
 
         <!-- CTA BUTTONS -->
@@ -189,17 +222,17 @@ index.html
           <div class="actions">
             <a class="btn ghost call-btn" href="tel:+917772078610">
               <i class="fas fa-phone"></i>
-              Call for consultation</a>
+              Call 77720 78610</a>
 
             <!-- WHATSAPP CTA -->
             <a class="btn whatsapp-btn"
-              href="https://wa.me/917772078610?text=Hello%20The%20Fire%20Wala%2C%20I%20would%20like%20to%20enquire%20about%20fire%20extinguisher%20supply%20and%20refilling%20services."
+              href="https://wa.me/917772078610?text=Hello%20The%20Fire%20Wala%2C%20I%20want%20the%20Rs.100%2Fkg%20refilling%20offer.%20Number%20of%20cylinders%3A%20"
               target="_blank" rel="noopener noreferrer">
 
               <span class="whatsapp-icon">
                 <i class="fab fa-whatsapp" style="color: #ebf9f0; font-size: 30px;"></i>
               </span>
-              Chat on WhatsApp
+              WhatsApp for Quote
             </a>
 
           </div>
@@ -245,6 +278,60 @@ index.html
     </div>
   </section>
 
+
+  <!-- REFILLING PRICE & INCLUSIONS -->
+  <section class="price-section" id="price">
+    <div class="container">
+      <div class="price-card">
+        <div class="price-head">
+          <p class="kicker">Limited period offer</p>
+          <h2>Refilling at <s>₹150</s> ₹100/kg <small>+ GST</small></h2>
+          <p class="price-sub">For ABC dry powder type. CO2 / Foam / Water — quote on WhatsApp.</p>
+        </div>
+        <ul class="price-list">
+          <li>Physical inspection — body, hose, nozzle, pin &amp; gauge</li>
+          <li>Old powder removal &amp; internal cleaning</li>
+          <li>Fresh extinguishing agent &amp; nitrogen pressure charging</li>
+          <li>Pressure &amp; leakage check</li>
+          <li>Refilling certificate + next-due-date sticker</li>
+          <li>FREE pickup &amp; drop on 4 or more cylinders</li>
+        </ul>
+        <p class="price-note">Hydro-testing, spare parts or cylinder replacement, if required, are quoted separately after inspection.</p>
+        <div class="price-cta">
+          <a class="btn whatsapp-btn" href="https://wa.me/917772078610?text=Hello%20The%20Fire%20Wala%2C%20I%20want%20the%20Rs.100%2Fkg%20refilling%20offer.%20Number%20of%20cylinders%3A%20" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp for Quote</a>
+          <a class="btn ghost call-btn" href="tel:+917772078610"><i class="fas fa-phone"></i> Call 77720 78610</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREAS -->
+  <section class="areas-section" id="areas">
+    <div class="container">
+      <h2>Refilling service areas in Raipur</h2>
+      <p>Pickup &amp; drop available across Raipur city and nearby industrial areas:</p>
+      <div class="area-chips">
+        <span>Shankar Nagar</span><span>Kota</span><span>Amanaka</span><span>Siltara</span><span>Urla</span>
+        <span>Sondongri</span><span>Tatibandh</span><span>Pandri</span><span>Telibandha</span><span>Mowa</span>
+        <span>Devendra Nagar</span><span>Bhanpuri</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF GALLERY -->
+  <section class="proof-section" id="proof">
+    <div class="container">
+      <h2>Real service, real certificates</h2>
+      <p>Every refilling job is handed over with a service certificate.</p>
+      <div class="proof-grid">
+        <img src="./assests/proof/team-van.jpg" alt="The Fire Wala service team with service vehicle" loading="lazy">
+        <img src="./assests/proof/cert-mall-showroom.jpg" alt="Refilling certificate handed over at a showroom" loading="lazy">
+        <img src="./assests/proof/cert-shop.jpg" alt="Refilling certificate handed over at a shop" loading="lazy">
+        <img src="./assests/proof/cert-pharmacy.jpg" alt="Refilling certificate handed over at a pharmacy" loading="lazy">
+        <img src="./assests/proof/cert-workshop.jpg" alt="Refilling certificate handed over at a workshop" loading="lazy">
+      </div>
+    </div>
+  </section>
 
   <!-- CERTIFICATES -->
 <section class="certifications" id="certifications">
@@ -829,17 +916,16 @@ index.html
       <div class="faq">
         <div class="faq-item"><button class="faq-q">Does the brand really matter? Any brand will do.<span
               class="plus">+</span></button>
-          <div class="faq-a">Every brand has to meet different safety testing standards. Non-branded cylinders carry a higher
-            risk of bursting under pressure. IS/UL/FM-approved extinguishers are tested at pressures of 35–50 bar, whereas local
-            cylinders may fail at just 10–12 bar. Branded products offer reliability, a longer service life, and inspection
-            approval.
+          <div class="faq-a">Every brand has to meet different safety testing standards. Certified (ISI / approved) extinguishers are manufactured and pressure-tested to defined standards, while
+            uncertified cylinders may not have gone through the same testing. Certified products offer more reliability, a
+            longer service life and are easier to justify during inspections.
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-q">How many fire extinguishers will need to be installed? Just one is enough.<span class="plus">+</span>
           </button>
-          <div class="faq-a">the quantity and type of extinguishers are calculated based on the area, height, and occupancy of your premises. According to the NBC, one extinguisher is required for every 200 m², with a maximum walking distance of 15 metres to reach one. If the area is large, one extinguisher may not be sufficient to provide adequate coverage and protection.
+          <div class="faq-a">the quantity and type of extinguishers are calculated based on the area, height, and occupancy of your premises. Applicable standards (such as NBC and IS 2190) and local fire authority requirements decide the exact number — our team can survey your site and recommend it. If the area is large, one extinguisher may not be sufficient to provide adequate coverage and protection.
           </div>
         </div>
 
@@ -847,7 +933,7 @@ index.html
         <div class="faq-item"><button class="faq-q">Do you just refill the extinguisher or do you also change the sticker?<span
               class="plus">+</span></button>
           <div class="faq-a">
-            We follow the complete refilling process — pre-weighing, emptying, internal cleaning, MAP powder refilling, nitrogen re-pressurization, or leakage testing. We check every cylinder’s pressure gauge reading and verify its weight. We do not simply apply a new sticker. At The Fire Wala, you receive a refill certificate, tag, and photographic proof along with the refilling service. This process is defined under the NBC and IS 2190.
+            We follow the complete refilling process — pre-weighing, emptying, internal cleaning, MAP powder refilling, nitrogen re-pressurization, or leakage testing. We check every cylinder’s pressure gauge reading and verify its weight. We do not simply apply a new sticker. At The Fire Wala, you receive a refill certificate, tag, and photographic proof along with the refilling service. We follow the maintenance practices of IS 2190.
           </div>
         </div>
         
@@ -855,7 +941,7 @@ index.html
           <button class="faq-q">Your refilling charges are higher; I can get it done cheaper in the market.<span
               class="plus">+</span>
             </button>
-          <div class="faq-a">Cheap refilling may save money in the short term, but it can lead to long-term risks. Most low-grade refilling services in the market use non-MAP powder and non-certified gas, which can cause nozzle blockages and pressure loss within 3–4 months. We use ISI-certified MAP-90 powder and pure nitrogen pressure to ensure that the extinguisher remains stable for 12 months. Cheap refilling can mean false safety and real risk.
+          <div class="faq-a">Cheap refilling may save money in the short term, but it can lead to long-term risks. Low-grade powder or improper charging can lead to nozzle blockage and pressure loss. We use quality extinguishing agent and nitrogen pressure charging, and check pressure and leakage before handover. And now our refilling is just ₹100/kg + GST (limited period offer).
           </div>
         </div>
 
@@ -863,7 +949,7 @@ index.html
           <button class="faq-q">Will I receive any proof after refilling?
             <span class="plus">+</span>
           </button>
-          <div class="faq-a">After refilling, we provide you with a Refilling Certificate, Test Report, and Sticker (Date & Next Due). We maintain photographic proof of every cylinder. You will receive valid evidence that can be presented during Fire Officer inspections. We believe in transparency and accountability.
+          <div class="faq-a">After refilling, we provide you with a Refilling Certificate, Test Report, and Sticker (Date & Next Due). We maintain photographic proof of every cylinder. These records help you show your maintenance history during inspections and audits. We believe in transparency and accountability.
           </div>
         </div>
 
@@ -871,7 +957,7 @@ index.html
           <button class="faq-q">What if the cylinder does not work during a fire?
             <span class="plus">+</span>
           </button>
-          <div class="faq-a">We pressure-test and leak-test every extinguisher and attach a ‘Ready for Use’ tag. If a cylinder fails during its AMC period, we provide a free replacement. However, if timely refilling is not carried out, the pressure naturally drops, increasing the risk of failure during a fire. Timely refilling means a working system.
+          <div class="faq-a">We pressure-test and leak-test every extinguisher and attach a ‘Ready for Use’ tag. However, if timely refilling is not carried out, the pressure naturally drops, increasing the risk of failure during a fire. Timely refilling means a working system.
           </div>
         </div>
 
@@ -879,7 +965,7 @@ index.html
           <button class="faq-q">Why should I buy a new extinguisher instead of reusing the old one?
             <span class="plus">+</span>
           </button>
-          <div class="faq-a">A cylinder has a lifespan of 10 years and must undergo hydrostatic testing every five years. The chances of corrosion or fatigue increase in old cylinders, and they may even burst. The NBC and Fire Department can reject old or expired cylinders. Buying a new system ensures safety and compliance.
+          <div class="faq-a">Old cylinders need periodic hydrostatic testing, and the chances of corrosion or fatigue increase with age. Inspecting authorities may object to old or damaged cylinders. Our team will tell you honestly whether refilling or replacement is the right choice. Buying a new system ensures safety and compliance.
           </div>
         </div>
 
@@ -887,7 +973,7 @@ index.html
           <button class="faq-q">Do you provide free training?
             <span class="plus">+</span>
           </button>
-          <div class="faq-a">Yes, absolutely, During installation and AMC visits, we train your staff on extinguisher types and the PASS technique (Pull, Aim, Squeeze, Sweep), as well as evacuation practices. This training is mandatory according to the NBC.
+          <div class="faq-a">Yes, absolutely, During installation and AMC visits, we train your staff on extinguisher types and the PASS technique (Pull, Aim, Squeeze, Sweep), as well as evacuation practices. Trained staff are an important part of fire safety compliance.
           </div>
         </div>
 
@@ -1075,8 +1161,8 @@ index.html
       <!-- Contact -->
       <div class="footer-contact">
         <h3>Contact Us</h3>
-        <a href="tel:+917772078601">
-          +91 77720-78601
+        <a href="tel:+917772078610">
+          +91 77720-78610
         </a>
       </div>
 
@@ -1109,6 +1195,12 @@ index.html
     </span>
   </a>
 
+  <!-- Mobile sticky action bar -->
+  <div class="mobile-cta-bar">
+    <a href="tel:+917772078610" class="mcb-call"><i class="fas fa-phone"></i> Call</a>
+    <a href="https://wa.me/917772078610?text=Hello%20The%20Fire%20Wala%2C%20I%20want%20the%20Rs.100%2Fkg%20refilling%20offer.%20Number%20of%20cylinders%3A%20" target="_blank" rel="noopener noreferrer" class="mcb-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+  </div>
+
   <!-- Existing Floating Get a Quote Button -->
   <button class="float" onclick="openModal()">
     Get a Free Quote
@@ -1138,6 +1230,8 @@ index.html
 
 
         <form id="modalQuoteForm">
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0">
+
 
           <div class="fg">
 
@@ -1159,15 +1253,15 @@ index.html
 
             <div class="form-group">
               <label for="modalEmail">
-                Email id <span class="star">*</span>
+                Email id (optional)
               </label>
-              <input type="email" id="modalEmail" name="email" placeholder="you@company.com" autocomplete="email" required>
+              <input type="email" id="modalEmail" name="email" placeholder="you@company.com" autocomplete="email">
             </div>
 
             <div class="form-group">
               <label for="modalCompany">Company Name</label>
               <input type="text" id="modalCompany" name="company" placeholder="Enter company name"
-              maxlength="100" pattern="[A-Za-z ]*" title="Company name should contain alphabets and spaces only.">
+              maxlength="100">
             </div>
 
             <div class="form-group">
@@ -1209,10 +1303,10 @@ index.html
       <!-- Success message OUTSIDE the form -->
       <div class="success" id="success" style="display:none">
         <div class="big">✓</div>
-        <h2>Request captured!</h2>
+        <h2>Thank you!</h2>
         <p>
-          Your request has been submitted successfully.
-          The Fire Wala team can contact you soon.
+          Aapka form mil gaya hai. Hamari team jald hi aapse contact karegi.
+          Urgent ho to WhatsApp karein: 77720 78610
         </p>
 
         <button class="btn primary" type="button" onclick="closeModal()">
