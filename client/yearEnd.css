@@ -9,3 +9,10 @@
 @media (max-width: 768px) { .offer-banner .ob-more { display: none; } }
 .offer-banner .ye-cd { margin-left: 6px; font-weight: 700; }
 @media (max-width: 768px) { .type-tiles { grid-template-columns: repeat(2, 1fr); } #calculator .calc-row { grid-template-columns: 1fr; } }
+.reviews-section { padding: 44px 0; text-align: center; }
+.reviews-section h2 { margin: 0 0 18px; color: var(--dark, #141414); }
+.rv-stars { color: #f5a623; letter-spacing: 2px; }
+.rv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; text-align: left; }
+.rv { margin: 0; background: #fff; border: 1px solid var(--line, #e5e7eb); border-radius: 14px; padding: 16px; }
+.rv p { margin: 8px 0; color: var(--dark, #141414); font-size: 15px; }
+.rv cite { color: var(--muted, #667085); font-size: 13px; font-style: normal; }
