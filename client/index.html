@@ -239,10 +239,12 @@ index.html
 
         </div>
 
-        <div class="hero-note">
-          Regular inspection, maintenance and refilling help
-          keep extinguishers operational, maintained and
-          ready for emergency use.
+        <div class="hero-team">
+          <img src="./assests/proof/team-van.jpg" alt="The Fire Wala service team with service vehicle" loading="eager">
+          <div>
+            <strong>Our own trained team &amp; service vehicle</strong>
+            <span>Pickup, refilling and re-installation — handled by The Fire Wala, Raipur</span>
+          </div>
         </div>
 
       </div>
@@ -305,6 +307,96 @@ index.html
     </div>
   </section>
 
+  <!-- HEALTH CHECK QUIZ -->
+  <section class="hc-section" id="health-check">
+    <div class="container">
+      <p class="kicker">30-second check</p>
+      <h2>Will your fire extinguisher actually work in an emergency?</h2>
+      <p class="hc-sub">Answer 5 quick questions about your extinguisher.</p>
+      <form class="hc-quiz" id="hcQuiz">
+        <div class="hc-q"><span>1. Is the pressure gauge needle in the <b>green</b> zone?</span>
+          <label><input type="radio" name="q1" value="0" required> Yes</label>
+          <label><input type="radio" name="q1" value="2"> No / Don't know</label></div>
+        <div class="hc-q"><span>2. Is the next-due date on the sticker still in the future?</span>
+          <label><input type="radio" name="q2" value="0" required> Yes</label>
+          <label><input type="radio" name="q2" value="2"> No / No sticker</label></div>
+        <div class="hc-q"><span>3. Are the safety pin and seal intact?</span>
+          <label><input type="radio" name="q3" value="0" required> Yes</label>
+          <label><input type="radio" name="q3" value="1"> No / Don't know</label></div>
+        <div class="hc-q"><span>4. Is the body free from rust, dents or a cracked hose?</span>
+          <label><input type="radio" name="q4" value="0" required> Yes</label>
+          <label><input type="radio" name="q4" value="1"> No</label></div>
+        <div class="hc-q"><span>5. When was it last refilled?</span>
+          <label><input type="radio" name="q5" value="0" required> Within 1 year</label>
+          <label><input type="radio" name="q5" value="2"> More than 1 year / Don't know</label></div>
+        <button type="submit" class="btn primary">Check my result</button>
+      </form>
+      <div class="hc-result" id="hcResult" role="status" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- FAILURE SIGNS -->
+  <section class="signs-section" id="signs">
+    <div class="container">
+      <h2>4 signs your extinguisher needs refilling now</h2>
+      <div class="signs-grid">
+        <div class="sign"><div class="sign-ic">🔴</div><h3>Gauge needle in red</h3><p>Pressure has dropped — the extinguisher may not discharge.</p></div>
+        <div class="sign"><div class="sign-ic">📅</div><h3>Due date crossed</h3><p>Expired sticker or no sticker at all.</p></div>
+        <div class="sign"><div class="sign-ic">🔓</div><h3>Pin or seal missing</h3><p>It may have been used or tampered with.</p></div>
+        <div class="sign"><div class="sign-ic">🟤</div><h3>Rust or cracked hose</h3><p>Body or hose damage needs inspection.</p></div>
+      </div>
+      <div class="cta-strip">
+        <span>Seen any of these? Get it refilled at <b>₹100/kg + GST</b>.</span>
+        <a class="btn whatsapp-btn" href="https://wa.me/917772078610?text=Hello%20The%20Fire%20Wala%2C%20my%20extinguisher%20needs%20refilling.%20Number%20of%20cylinders%3A%20" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICE CALCULATOR (ABC) -->
+  <section class="calc-section" id="calculator">
+    <div class="container">
+      <div class="calc-card">
+        <h2>Estimate your refilling cost</h2>
+        <p class="calc-sub">ABC dry powder type · ₹100/kg + GST (limited period offer)</p>
+        <div class="calc-row">
+          <label>Cylinder size
+            <select id="calcSize">
+              <option value="1">1 kg</option><option value="2">2 kg</option><option value="4">4 kg</option>
+              <option value="6" selected>6 kg</option><option value="9">9 kg</option>
+            </select>
+          </label>
+          <label>Number of cylinders
+            <input type="number" id="calcQty" min="1" max="500" value="4">
+          </label>
+        </div>
+        <div class="calc-out" id="calcOut" aria-live="polite"></div>
+        <a class="btn whatsapp-btn" id="calcWa" href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Get this quote on WhatsApp</a>
+        <p class="calc-note">Estimate only. Final quote after inspection. CO2 / Foam / Water — ask on WhatsApp.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section class="compare-section" id="compare">
+    <div class="container">
+      <h2>Cheap refill vs The Fire Wala</h2>
+      <div class="compare-wrap">
+        <table class="compare">
+          <thead><tr><th></th><th>Typical cheap refill</th><th>The Fire Wala</th></tr></thead>
+          <tbody>
+            <tr><td>Old powder removed &amp; cylinder cleaned</td><td>❓</td><td>✅</td></tr>
+            <tr><td>Fresh agent + nitrogen pressure charging</td><td>❓</td><td>✅</td></tr>
+            <tr><td>Pressure &amp; leakage check</td><td>❓</td><td>✅</td></tr>
+            <tr><td>Refilling certificate + next-due sticker</td><td>❌</td><td>✅</td></tr>
+            <tr><td>Pickup &amp; drop</td><td>❌</td><td>✅ FREE on 4+</td></tr>
+            <tr><td>Service record for inspections</td><td>❌</td><td>✅</td></tr>
+            <tr><td>ISO 9001:2015 company, since 2016</td><td>—</td><td>✅</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
   <!-- SERVICE AREAS -->
   <section class="areas-section" id="areas">
     <div class="container">
@@ -315,6 +407,19 @@ index.html
         <span>Sondongri</span><span>Tatibandh</span><span>Pandri</span><span>Telibandha</span><span>Mowa</span>
         <span>Devendra Nagar</span><span>Bhanpuri</span>
       </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="map-section" id="location">
+    <div class="container map-in">
+      <div>
+        <h2>Visit our office</h2>
+        <p>Office No. G04, Safoorah Complex, Parashuram Chowk, Stadium Road, in front of Kota, Raipur – 492010</p>
+        <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Safoorah+Complex+Parashuram+Chowk+Stadium+Road+Raipur" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+      </div>
+      <iframe title="The Fire Wala office location" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Safoorah+Complex+Parashuram+Chowk+Stadium+Road+Raipur&output=embed"></iframe>
     </div>
   </section>
 

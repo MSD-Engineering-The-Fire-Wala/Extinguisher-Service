@@ -827,3 +827,63 @@ document.addEventListener("click", function (e) {
     tfwTrack("call_click", { link_location: link.className || "link" });
   }
 });
+
+
+// =========================================
+// HEALTH CHECK QUIZ
+// =========================================
+(function () {
+  const quiz = document.getElementById("hcQuiz");
+  const out = document.getElementById("hcResult");
+  if (!quiz || !out) return;
+  const wa = "https://wa.me/917772078610?text=";
+  quiz.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const fd = new FormData(quiz);
+    let score = 0;
+    for (const v of fd.values()) score += Number(v) || 0;
+    let level, title, text;
+    if (score >= 4) {
+      level = "high"; title = "🔴 High risk";
+      text = "Your extinguisher may not work when needed. Get it inspected and refilled now.";
+    } else if (score >= 1) {
+      level = "mid"; title = "🟠 Needs attention";
+      text = "Some checks failed. A quick inspection and refill is recommended.";
+    } else {
+      level = "low"; title = "🟢 Looks OK";
+      text = "Good! Keep checking monthly. Save our number for your next due date.";
+    }
+    const msg = encodeURIComponent("Hello The Fire Wala, my extinguisher health check result: " + title.replace(/^\S+\s/, "") + ". Please share refilling quote. Number of cylinders: ");
+    out.className = "hc-result show " + level;
+    out.innerHTML = "<h3>" + title + "</h3><p>" + text + "</p>" +
+      '<a class="btn whatsapp-btn" target="_blank" rel="noopener noreferrer" href="' + wa + msg + '">WhatsApp for refilling ₹100/kg</a>';
+    if (typeof tfwTrack === "function") tfwTrack("health_check_result", { risk_level: level });
+  });
+})();
+
+
+// =========================================
+// PRICE CALCULATOR (ABC, Rs.100/kg + GST)
+// =========================================
+(function () {
+  const size = document.getElementById("calcSize");
+  const qty = document.getElementById("calcQty");
+  const out = document.getElementById("calcOut");
+  const wa = document.getElementById("calcWa");
+  if (!size || !qty || !out || !wa) return;
+  const RATE = 100, GST = 0.18;
+  function inr(n) { return "₹" + Math.round(n).toLocaleString("en-IN"); }
+  function update() {
+    const kg = Number(size.value) || 0;
+    const n = Math.max(1, Math.min(500, Math.floor(Number(qty.value) || 1)));
+    const base = kg * n * RATE;
+    const total = base * (1 + GST);
+    out.innerHTML = "Estimated: <b>" + inr(base) + "</b> + GST (" + inr(total) + " incl. 18% GST)<br>" +
+      (n >= 4 ? "✅ FREE pickup &amp; drop included" : "Add " + (4 - n) + " more cylinder(s) for FREE pickup &amp; drop");
+    const msg = "Hello The Fire Wala, I want refilling quote: " + n + " x " + kg + " kg ABC cylinders (estimate " + inr(base) + " + GST).";
+    wa.href = "https://wa.me/917772078610?text=" + encodeURIComponent(msg);
+  }
+  size.addEventListener("change", update);
+  qty.addEventListener("input", update);
+  update();
+})();
