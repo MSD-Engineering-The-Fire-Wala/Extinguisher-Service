@@ -2,8 +2,9 @@
  * The Fire Wala – Website lead receiver (Google Apps Script)
  *
  * Setup (one time, ~5 minutes):
- * 1. Open the Google Sheet "TFW Website Leads (thefirewala.in)".
- * 2. Extensions → Apps Script. Delete any code there and paste this whole file.
+ * 1. Open https://script.google.com → "New project"
+ *    (or: open the Sheet → Extensions → Apps Script).
+ * 2. Delete any code there and paste this whole file. Save.
  * 3. Click Deploy → New deployment → type "Web app".
  *      Execute as: Me
  *      Who has access: Anyone
@@ -14,6 +15,16 @@
  */
 
 const MAX_LEN = 200;
+
+// Works both ways: pasted inside the Sheet (Extensions → Apps Script)
+// or as a standalone project at script.google.com.
+const SHEET_ID = "1rrYVZCbucLSWLjfc6Cb1V-4SZBky5e_faqWbrANxLXs";
+
+function getSheet_() {
+  const active = SpreadsheetApp.getActiveSpreadsheet();
+  const ss = active || SpreadsheetApp.openById(SHEET_ID);
+  return ss.getSheets()[0];
+}
 
 function clean_(v) {
   if (v === undefined || v === null) return "";
@@ -37,7 +48,7 @@ function doPost(e) {
       return json_({ success: false, message: "Name and a valid 10-digit phone are required." });
     }
 
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
+    const sheet = getSheet_();
     sheet.appendRow([
       new Date(),
       clean_(data.client_name),
