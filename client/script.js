@@ -101,7 +101,7 @@ if (modal) {
 
 // GOOGLE SHEET RECEIVER (Google Apps Script web app)
 // Paste the Apps Script "Web app URL" (ends with /exec) below.
-const SHEET_WEBAPP_URL = "PASTE_APPS_SCRIPT_WEB_APP_URL_HERE";
+const SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwasN-crY9yuP1QWLOzz1gcKA2aRIO8TUJEIk8DYoUa6uRTnnpFn1OlgFveo3s_P5lkHg/exec";
 
 const SUCCESS_MESSAGE =
   "Thank you! Aapka form mil gaya hai. Hamari team jald hi aapse contact karegi.";
