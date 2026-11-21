@@ -863,7 +863,7 @@ document.addEventListener("click", function (e) {
 
 
 // =========================================
-// PRICE CALCULATOR (ABC / CO2 / Foam, Rs.100/kg + GST)
+// PRICE CALCULATOR: Rs.100 per kg/L + GST, size discount (>4: 10%, >=9: 15%)
 // =========================================
 (function () {
   const type = document.getElementById("calcType");
@@ -873,20 +873,36 @@ document.addEventListener("click", function (e) {
   const wa = document.getElementById("calcWa");
   if (!size || !qty || !out || !wa) return;
   const RATE = 100, GST = 0.18;
+  const SIZES = {
+    ABC: { unit: "kg", list: [1, 2, 4, 6, 9], def: 6 },
+    CO2: { unit: "kg", list: [2, 4.5, 6, 9], def: 4.5 },
+    Foam: { unit: "L", list: [6, 9, 50], def: 9 },
+    Water: { unit: "L", list: [6, 9], def: 9 }
+  };
   function inr(n) { return "₹" + Math.round(n).toLocaleString("en-IN"); }
+  function disc(c) { if (!type) return 0; return c >= 9 ? 0.15 : c > 4 ? 0.10 : 0; }
+  function cfg() { return SIZES[type ? type.value : "ABC"] || SIZES.ABC; }
+  function fillSizes() {
+    if (!type) return;
+    const c = cfg();
+    size.innerHTML = c.list.map(v => '<option value="' + v + '"' + (v === c.def ? " selected" : "") + ">" + v + " " + c.unit + "</option>").join("");
+  }
   function update() {
-    const kg = Number(size.value) || 0;
+    const c = cfg(), cap = Number(size.value) || 0;
     const n = Math.max(1, Math.min(500, Math.floor(Number(qty.value) || 1)));
-    const base = kg * n * RATE;
-    const total = base * (1 + GST);
-    out.innerHTML = "Estimated: <b>" + inr(base) + "</b> + GST (" + inr(total) + " incl. 18% GST)<br>" +
+    const d = disc(cap), list = cap * RATE, per = list * (1 - d), base = per * n;
+    out.innerHTML =
+      "Per cylinder: " + cap + " " + c.unit + " × ₹100 = " + inr(list) +
+      (d ? " → <b>" + inr(per) + "</b> after " + (d * 100) + "% size discount" : " → <b>" + inr(per) + "</b>") +
+      "<br>" + n + " cylinder(s): <b>" + inr(base) + "</b> + GST (" + inr(base * (1 + GST)) + " incl. 18% GST)<br>" +
       (n >= 4 ? "✅ FREE pickup &amp; drop included" : "Add " + (4 - n) + " more cylinder(s) for FREE pickup &amp; drop");
     const t = type ? type.value : "ABC";
-    const msg = "Hello The Fire Wala, I want refilling quote: " + n + " x " + kg + " kg " + t + " cylinders (estimate " + inr(base) + " + GST).";
+    const msg = "Hello The Fire Wala, I want refilling quote: " + n + " x " + cap + " " + c.unit + " " + t + " (estimate " + inr(base) + " + GST).";
     wa.href = "https://wa.me/917772078610?text=" + encodeURIComponent(msg);
   }
+  if (type) type.addEventListener("change", function () { fillSizes(); update(); });
   size.addEventListener("change", update);
-  if (type) type.addEventListener("change", update);
   qty.addEventListener("input", update);
+  fillSizes();
   update();
 })();
